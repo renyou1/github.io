@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://scratch.xiaoma.wang/scratch.php/Compose/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+    <link rel="icon" href="http://scratch.xiaoma.wang/favicon.gif" type="image/gif">
+    <title>小码王</title>
+    <meta content="小码王" name="keywords">
+    <meta content="小码王" name="description">
+    <script type="text/javascript" src="js/swfobject.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/bowser.js"></script>
+    <script>
+        window.console||(window.console={log:$.noop,error:$.noop,debug:$.noop}); // ensure console fails gracefully when missing
+        // define _gaq here to log errors with GA. ga.js script gets loaded furthe down
+        var sessionCookieName = 'scratchsessionsid';
+        var _gaq = window._gaq || [];
+        _gaq.push(['_setAccount', 'UA-30688952-1']);
+        _gaq.push(['_setSampleRate', '10']);
+        _gaq.push(['_trackPageview']);
+
+        window.onbeforeunload = function(e){
+            e.returnValue = '确定离开当前页面吗?';
+        }
+    </script>
+    <script type="text/javascript">
+        var sessionCookieName = 'PHPSESSID';
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function setCookie(name, value, days) {
+            var expires;
+
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toGMTString();
+            } else {
+                expires = "";
+            }
+            document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/" + "; domain=xiaoma.wang";
+        }
+
+        var sessionCookiesValue = getCookie(sessionCookieName);
+        setCookie(sessionCookieName,sessionCookiesValue,1);   //设置一天
+    </script>
+    <script>
+        var Scratch = Scratch || {};
+        Scratch.INIT_DATA = Scratch.INIT_DATA || {};
+        Scratch.INIT_DATA.ADMIN = false;
+        Scratch.INIT_DATA.LOGGED_IN_USER = {
+            options: {
+                authenticated:false,
+                permissions: []
+            }
+        };
+        Scratch.INIT_DATA.comment_posting = true;
+        Scratch.INIT_DATA.BROWSERS_SUPPORTED = {
+            chrome: 35,
+            firefox: 31,
+            msie: 8,
+            safari: 7
+        };
+        Scratch.INIT_DATA.TEMPLATE_CUES = {
+            unsupported_browser: true,
+            welcome: true,
+            confirmed_email: false
+        };
+
+        Scratch.INIT_DATA.PROJECT = {
+            model: {
+                id: null,
+                creator: null,
+                title: 'Untitled',
+                isPrivate: true
+            },
+            is_new: true
+        }
+        Scratch.INIT_DATA.HAS_NEVER_REMIXED = false;
+        /*
+        Scratch.INIT_DATA.TIPS = {
+            HELP_URLS : {
+                'zh-cn': "//cdn.scratch.mit.edu/scratchr2/static/__bdb14cb9fd17ce2db79572b8e26e8a0e__/help/zh-cn/",
+                'zh-tw': "//cdn.scratch.mit.edu/scratchr2/static/__bdb14cb9fd17ce2db79572b8e26e8a0e__/help/zh-tw/",
+            },
+
+            CURRENT_LANGUAGE: "zh-cn",
+        };*/
+        Scratch.INIT_DATA.ADMIN_PANEL = {
+            'adminURL': null,
+        };
+        Scratch.INIT_DATA.COI = {
+            TARGET_DOMAIN: "http://oss.xiaoma.wang"
+        };
+        Scratch.INIT_DATA.IS_IP_BANNED = false;
+        /*
+        Scratch.INIT_DATA.GLOBAL_URLS = {
+            'media_url': '//cdn.scratch.mit.edu/static/site/',
+            'static_url': 'http://xmw.vm.com:8080/',
+            'static_path': '/scratchapi/static/'
+        }*/
+        Scratch.INIT_DATA.IS_SOCIAL = false;
+        Scratch.ALERT_MSGS = {}
+    </script>
+</head>
+<body>
+
+<div id="player" class="player" style="height: 650px">
+    <div id="scratch-loader" style="display: none;"></div>
+    <object type="application/x-shockwave-flash" data="js/Scratch.swf" width="100%" height="100%" id="scratch" style="visibility: visible;"><param name="allowscriptaccess" value="always"><param name="allowfullscreen" value="true"><param name="wmode" value="opaque"><param name="menu" value="false"><param name="flashvars" value="autostart=false&amp;cloudToken=aaa&amp;cdnToken=&amp;urlOverrides=%7B%22sitePrefix%22%3A%22http%3A%2F%2Fscratch.xiaoma.wang%2F%22%2C%22siteCdnPrefix%22%3A%22http%3A%2F%2Foss.xiaoma.wang%2F%22%2C%22staticFiles%22%3A%22Public%2FScratch%2Fplugins%2Fscratch%2Flocale%2F%22%7D&amp;allowscriptaccess=always&amp;allowfullscreen=true&amp;extensionDevMode=false&amp;wmode=opaque&amp;menu=false&amp;default_title=未命名&amp;default_project=http://oss.xiaoma.wang/Public/Scratch/plugins/scratch/default.sb2&amp;swfSession=rgapqsqms9g5g7688ljn9f6fv6&amp;uuid=0&amp;username=李伟夏(老师)&amp;upload_server=http://scratch.xiaoma.wang/scratch.php/Compose/saveonserver&amp;project_checkname=http://scratch.xiaoma.wang/scratch.php/Compose/checkpname&amp;project_rename=http://scratch.xiaoma.wang/scratch.php/Compose/repname&amp;inIE=false&amp;project_title=Untitled&amp;project_isPrivate=true&amp;project_isNew=true"></object>
+    <script type="text/javascript">
+        window.SWFready=$.Deferred(); // Deferred makes sure we don't call ASSetEditMode before SWF is ready.
+        function JSeditorReady() {
+            try {
+                SWFready.resolve();
+                return true;
+            } catch (error) {
+                console.error(error.message, "\n", error.stack);
+                throw error;
+            }
+        }
+
+        function handleEmbedStatus(e) {
+            $('#scratch-loader').hide();
+            if(!e.success) {
+                $('#scratch').css('marginTop', '10');
+                $('#scratch IMG.proj_thumb').css('width', '179px');
+                $('#scratch DIV.scratch_unsupported').show();
+                $('#scratch DIV.scratch_loading').hide();
+            }else{
+                $('#scratch').css('visibility', 'visible');
+            }
+        }
+
+        var uuid = "";
+        var default_title = "";
+        var mysb2 = "";
+        var defaltu_sb2 = ( mysb2 ? mysb2 : "http://oss.xiaoma.wang/Public/Scratch/plugins/scratch/default.sb2" );
+
+        // The flashvars tell flash about the project data (and autostart=true)
+        var flashvars = {
+            autostart: 'false',
+            cloudToken: 'aaa',
+            cdnToken: '',
+            urlOverrides: {
+                sitePrefix: window.location.protocol + '//' + window.location.host + '/',
+                siteCdnPrefix: 'http://oss.xiaoma.wang/',     //主域名
+                //assetPrefix: "http://oss.xiaoma.wang/",
+                //assetCdnPrefix: "http://oss.xiaoma.wang/",
+                //projectPrefix: "http://oss.xiaoma.wang/",
+                //projectCdnPrefix: "http://oss.xiaoma.wang/",
+                //internalAPI: "internalapi/",
+                //siteAPI: "scratchapi/",
+                staticFiles: "Public/Scratch/plugins/scratch/locale/"
+            },
+            allowscriptaccess: 'always',
+            allowfullscreen: 'true',
+            extensionDevMode : 'false',
+            wmode: 'opaque',
+            menu: 'false',
+            default_title : default_title ? default_title : "未命名" ,
+            default_project : defaltu_sb2,
+            swfSession : sessionCookiesValue,
+            uuid : uuid ? uuid : 0 ,
+            username : "李伟夏(老师)" ,
+            upload_server : 'http://scratch.xiaoma.wang/scratch.php/Compose/saveonserver',
+            project_checkname : 'http://scratch.xiaoma.wang/scratch.php/Compose/checkpname',
+            project_rename : 'http://scratch.xiaoma.wang/scratch.php/Compose/repname',
+            inIE: (navigator.userAgent.indexOf('MSIE') > -1)
+        };
+
+        $.each(flashvars, function(prop, val) {
+            if($.isPlainObject(val))
+                flashvars[prop] = encodeURIComponent(JSON.stringify(val));
+        });
+
+        $.each(Scratch.INIT_DATA.PROJECT.model, function(i, val) {
+            if(val != null)
+                flashvars['project_'+i] = encodeURIComponent(val);
+        });
+
+        if(Scratch.INIT_DATA.PROJECT.is_new)
+            flashvars.project_isNew = true;
+
+        var params = {};
+        params.allowscriptaccess = 'always';     //解决跨域问题,详见:http://blog.csdn.net/res_cue/article/details/8244287
+        params.allowfullscreen = 'true';
+        params.wmode = 'opaque';
+        params.menu = 'false';
+        // url format flashvars for createSWF call (see
+        // https://github.com/LLK/scratchr2/blob/f42c289a5fa890d9c5562cc1fa54b0aea3dfa45e/static/js/swfobject.js#L673-L682)
+        for (var i in flashvars) {
+            if (typeof params.flashvars !== 'undefined') {
+                params.flashvars += '&' + i + '=' +flashvars[i];
+            } else {
+                params.flashvars = i + '=' + flashvars[i];
+            }
+        }
+
+        var swfFile = (swfobject.hasFlashPlayerVersion('11.7.0') ? 'Scratch.swf' : 'Scratch.swf');
+
+        var swfAtt = {
+            data: "http://oss.xiaoma.wang/Public/Scratch/plugins/scratch/" + swfFile,
+            width: "100%",
+            height: "100%"
+        };
+
+        swfobject.addDomLoadEvent(function() {
+            // check if mobile/tablet browser user bowser
+            if(bowser.mobile || (bowser.tablet && typeof bowser.msie === 'undefined')) {
+                // if on mobile, show error screen
+                handleEmbedStatus({success: false});
+            } else {
+                // if not on ie, let browser try to handle flash loading
+                var swf = swfobject.createSWF(swfAtt, params, "scratch");
+                handleEmbedStatus({success: true, ref: swf});
+            }
+            document.getElementById('scratch').style.visibility = 'visible';
+        });
+
+        //Dynamically add iframe for registration window
+        $.when(window.SWFready).done(function() {
+            $('<iframe id="registration-iframe" class="iframeshim" style="background:#fff;z-index:-1;" frameborder="0" scrolling="no">').insertBefore('#registration')
+        });
+
+        // enables the SWF to log errors
+        function JSthrowError(e) {
+            if (window.onerror) window.onerror(e, 'swf', 0);
+            else console.error(e);
+        }
+        //swfobject.embedSWF("http://oss.xiaoma.wang/Public/Scratch/plugins/scratch/Scratch.swf", "scratch", "100%", "100%", "10.2.0",null, flashvars, params, null, null);
+    </script>
+</div>
+
+</body></html>
